@@ -1,7 +1,7 @@
 import pytest
 
 
-@pytest.fixture(scope='function', autouse=True)
+# @pytest.fixture(scope='function', autouse=True)
 def introspection_of_test(request):
     yield
     test_name = str(request.function.__name__)
