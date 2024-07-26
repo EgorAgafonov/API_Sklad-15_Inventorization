@@ -6,20 +6,22 @@ s15 = Sklad15Inventorization()
 
 
 class TestInventorizationSklad15:
-    """Набор авто-тестов для проверки GET-запроса функции "Инвентаризация" REST API 'Склад 15, Базовый'."""
+    """Набор позитивных, автоматизированных тест-кейсов для проверки GET-запроса функции
+    "Инвентаризация" REST API 'Склад 15, Базовый'."""
 
     def test_get_data_from_invent_docs(self, key="$select", value="id,name"):
-        """Позитивный тест проверки запроса"""
+        """Проверка GET-запрос функции 'Авторизация' на предмет предоставления сведений о документах инвентаризации.
+        Параметр запроса query использует верифицированные значения, указанные в документации Swagger. Валидация теста
+        успешна, если тело ответа содержит сведения о всех запрошенных атрибутах документов."""
 
         status, result = s15.get_select_docs_info(query_key=key, query_value=value)
 
         assert status == 200, f'Ошибка! Статус-код запроса: {status}'
-        print(result)
+
         for i in result['value']:
-            line = f'\n{i}'
-            print(line)
-        # assert len(result.get('pets')) > 0, 'Количество питомцев не соответствует ожиданиям'
-        # print(f"\nТестируемое значение filter = : '{filter}'")
+            assert i['id'] != ""
+            assert i['name'] != ""
+
 
     # @pytest.mark.three
     # @pytest.mark.get_info_invalid

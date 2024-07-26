@@ -11,7 +11,9 @@ class Sklad15Inventorization:
         self.base_url = url_base
 
     def get_select_docs_info(self, query_key: str, query_value: str):
-        """"""
+        """GET-mетод для предоставления сведений о документах инвентаризации приложения MobileSMARTS "Склад 15, Базовый.
+         Аргументы query_key и query_value принимают значения, указанные в REST API документации Swagger для
+         «Mobile SMARTS: Магазин 15»."""
 
         query = {query_key: query_value}
 
