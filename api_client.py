@@ -1,5 +1,4 @@
 import requests
-import pytest
 import json
 from settings import url_base
 
@@ -10,14 +9,12 @@ class Sklad15Inventorization:
     def __init__(self):
         self.base_url = url_base
 
-    def get_select_docs_info(self, query_key: str, query_value: str):
+    def get_select_docs_info(self, query: str):
         """GET-mетод для предоставления сведений о документах инвентаризации приложения MobileSMARTS "Склад 15, Базовый.
          Аргументы query_key и query_value принимают значения, указанные в REST API документации Swagger для
          «Mobile SMARTS: Магазин 15»."""
 
-        query = {query_key: query_value}
-
-        response = requests.get(self.base_url, params=query)
+        response = requests.get(self.base_url + query)
 
         status = response.status_code
         result = ""

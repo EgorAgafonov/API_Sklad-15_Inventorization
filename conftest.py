@@ -1,13 +1,7 @@
-import sys
 import pytest
-import requests
-from datetime import *
-import json
-from settings import *
-import os
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def introspection_of_test(request):
     yield
     test_name = str(request.function.__name__)
