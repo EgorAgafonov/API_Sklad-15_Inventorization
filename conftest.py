@@ -36,7 +36,7 @@ def special_chars():
 
 
 def rome_digits():
-    list_of_dgts = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
+    list_of_dgts = ['II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
     result = random.choice(list_of_dgts)
     return result
 

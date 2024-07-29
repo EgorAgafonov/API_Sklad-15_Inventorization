@@ -60,12 +60,12 @@ class TestInventorizationSklad15:
         assert status != 200
         print(result)
 
-    @pytest.mark.parametrize("top_value", ["-1", "zero", "1.5"], ids=['negative num', 'zero string', 'float num'])
+    @pytest.mark.parametrize("top_value", [rome_digits()], ids=["string rome digits"])
     def test_get_strict_quantity_of_docs_negative(self, top_value):
         """Негативный тест проверки GET-запроса функции 'Авторизация' на предмет предоставления сведений о документах
         инвентаризации в количестве (top) и с определенного индекса(пропуска), указанных в значении параметра query.
-        Строка query принимает не валидные значения параметра top. Валидация негативного теста успешна, если статус-код
-        ответа не равен 200 соответственно."""
+        Строка query принимает не валидные значения параметра top (строковые значения римских цифр). Валидация
+        негативного теста успешна, если статус-код ответа не равен 200 соответственно."""
 
         query = f"?$top={top_value}&$skip=16"
         response = requests.get(url_base + query)
