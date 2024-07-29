@@ -1,3 +1,4 @@
+import random
 import pytest
 
 
@@ -34,8 +35,10 @@ def special_chars():
     return '|\\/!@#$%^&*()-_=+`~?"№;:[]{}'
 
 
-def digits():
-    return '1234567890'
+def rome_digits():
+    list_of_dgts = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
+    result = random.choice(list_of_dgts)
+    return result
 
 
 def latin_chars():
