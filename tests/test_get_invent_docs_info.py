@@ -66,15 +66,13 @@ class TestInventorizationSklad15:
         assert status != 200
         print(result)
 
+    def test_post_inventar_doc(self, id=test_doc_id, name=test_name_doc):
+        """"""
 
-    # def test_post_inventar_doc(self, id_doc=""):
-    #     """Негативный тест проверки GET-запроса функции 'Авторизация' на предмет предоставления сведений о документах
-    #     инвентаризации в количестве (top) и с определенного индекса(пропуска), указанных в значении параметра query.
-    #     Строка query принимает не валидные значения параметра top (строковые значения римских цифр). Валидация
-    #     негативного теста успешна, если статус-код ответа не равен 200 соответственно."""
-    #
-    #
-    #     assert status != 200
-    #     print(result)
+        status, result = s15.post_inventar_doc(id_doc=id, name_doc=name)
+
+        print(status)
+        print(result)
+
 
 

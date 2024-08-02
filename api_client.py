@@ -1,6 +1,7 @@
 import requests
 import json
 from settings import url_base
+from datetime import datetime, timezone
 
 
 class Sklad15Inventorization:
@@ -28,14 +29,16 @@ class Sklad15Inventorization:
     def post_inventar_doc(self, id_doc: str, name_doc: str):
         """"""
 
-        body = {
+        current_date = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+        req_body = {
             "id": id_doc,
             "name": name_doc,
             "appointment": "string",
             "userId": "string",
             "userName": "string",
-            "lastChangeDate": "2024-08-02T08:42:06.975Z",
-            "createDate": "2024-08-02T08:42:06.975Z",
+            "lastChangeDate": current_date,
+            "createDate": current_date,
             "documentTypeName": "string",
             "declaredItems": [
                 {
@@ -52,10 +55,10 @@ class Sklad15Inventorization:
                     "firstStorageBarcode": "string",
                     "packingId": "string",
                     "sscc": "string",
-                    "registeredDate": "2024-08-02T08:42:06.975Z",
-                    "registrationDate": "2024-08-02T08:42:06.975Z",
+                    "registeredDate": current_date,
+                    "registrationDate": current_date,
                     "index": 0,
-                    "expiredDate": "2024-08-02T08:42:06.975Z",
+                    "expiredDate": current_date,
                     "secondCellId": "string",
                     "secondStorageBarcode": "string",
                     "product": {
@@ -126,10 +129,10 @@ class Sklad15Inventorization:
                     "firstStorageBarcode": "string",
                     "packingId": "string",
                     "sscc": "string",
-                    "registeredDate": "2024-08-02T08:42:06.975Z",
-                    "registrationDate": "2024-08-02T08:42:06.975Z",
+                    "registeredDate": current_date,
+                    "registrationDate": current_date,
                     "index": 0,
-                    "expiredDate": "2024-08-02T08:42:06.975Z",
+                    "expiredDate": current_date,
                     "secondCellId": "string",
                     "secondStorageBarcode": "string",
                     "product": {
@@ -203,10 +206,10 @@ class Sklad15Inventorization:
                     "firstStorageBarcode": "string",
                     "packingId": "string",
                     "sscc": "string",
-                    "registeredDate": "2024-08-02T08:42:06.975Z",
-                    "registrationDate": "2024-08-02T08:42:06.975Z",
+                    "registeredDate": current_date,
+                    "registrationDate": current_date,
                     "index": 0,
-                    "expiredDate": "2024-08-02T08:42:06.975Z",
+                    "expiredDate": current_date,
                     "secondCellId": "string",
                     "secondStorageBarcode": "string",
                     "product": {
@@ -287,11 +290,11 @@ class Sklad15Inventorization:
             "states": [
                 {
                     "modified": True,
-                    "modifiedDate": "2024-08-02T08:42:06.975Z",
+                    "modifiedDate": current_date,
                     "inProcess": True,
-                    "inProcessDate": "2024-08-02T08:42:06.975Z",
+                    "inProcessDate": current_date,
                     "finished": True,
-                    "finishedDate": "2024-08-02T08:42:06.975Z",
+                    "finishedDate": current_date,
                     "processingTime": "string",
                     "userId": "string"
                 }
@@ -308,7 +311,7 @@ class Sklad15Inventorization:
             "imyaSklada": "string"
         }
 
-        response = requests.post(self.base_url, data=body)
+        response = requests.post(self.base_url, data=req_body)
 
         status = response.status_code
         result = ""
