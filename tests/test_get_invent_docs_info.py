@@ -66,13 +66,16 @@ class TestInventorizationSklad15:
         assert status != 200
         print(result)
 
-    def test_post_inventar_doc(self, id="203da902-9d32-43a8-944d-e9c8399d58xx", name='Инвентаризация_test_post_req(1)'):
+    def test_post_inventar_doc(self, id="203da902-9d32-43a8-944d-e9c8399d58xx", name='Инвентаризация_test_post_req(2)'):
         """"""
 
         status, result = s15.post_inventar_doc(id_doc=id, name_doc=name)
         print(f"\n{result}")
 
+        get_status, get_result = s15.get_select_docs_info(query=f'/:{id}')
+        print(f"\n{get_result}")
 
+        # assert get_result['id'] == id
 
 
 
