@@ -61,6 +61,17 @@ class TestInventorizationSklad15:
         assert status != 200
         print(result)
 
+    def test_post_inventar_doc(self, id="203da902-9d32-43a8-944d-e9c8399d58xx", name='Инвентаризация_test_post_req(2)'):
+        """Позитивный тест проверки создания(добавления) документа об инвентаризации со значениями id и name,
+        переданными в запросе."""
+
+        status, result = s15.post_inventar_doc(id_doc=id, name_doc=name)
+        print(f"\n{result}")
+        print(f"\n{status}")
+
+        assert status == 201
+        assert result['id'] == id
+        assert result['name'] == name
 
 
 
