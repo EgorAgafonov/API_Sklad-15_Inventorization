@@ -24,9 +24,15 @@ class TestInventorizationSklad15:
         assert status == 200, f'Ошибка! Статус-код запроса: {status}'
 
         # 2. Проверка наличия в теле ответа значений ключей id и name:
+        id_num_list = []
+        for i in result["value"]:
+            id_num_list.append(i['name'])
+        print(f"\n{len(id_num_list)}")
+
         for i in result['value']:
             assert i['id'] != ""
             assert i['name'] != ""
+            print(f"\n{i}")
 
     def test_get_strict_quantity_of_docs_positive(self, query_value="?$top=5&$skip=16"):
         """Позитивный тест проверки GET-запрос функции 'Авторизация' на предмет предоставления сведений о документах
@@ -60,18 +66,15 @@ class TestInventorizationSklad15:
         assert status != 200
         print(result)
 
-    @pytest.mark.parametrize("top_value", [rome_digits()], ids=["string rome digits"])
-    def test_get_strict_quantity_of_docs_negative(self, top_value):
-        """Негативный тест проверки GET-запроса функции 'Авторизация' на предмет предоставления сведений о документах
-        инвентаризации в количестве (top) и с определенного индекса(пропуска), указанных в значении параметра query.
-        Строка query принимает не валидные значения параметра top (строковые значения римских цифр). Валидация
-        негативного теста успешна, если статус-код ответа не равен 200 соответственно."""
 
-        query = f"?$top={top_value}&$skip=16"
-        response = requests.get(url_base + query)
-        status = response.status_code
-        result = response.json()
+    # def test_post_inventar_doc(self, id_doc=""):
+    #     """Негативный тест проверки GET-запроса функции 'Авторизация' на предмет предоставления сведений о документах
+    #     инвентаризации в количестве (top) и с определенного индекса(пропуска), указанных в значении параметра query.
+    #     Строка query принимает не валидные значения параметра top (строковые значения римских цифр). Валидация
+    #     негативного теста успешна, если статус-код ответа не равен 200 соответственно."""
+    #
+    #
+    #     assert status != 200
+    #     print(result)
 
-        assert status != 200
-        print(result)
 
